@@ -17,17 +17,17 @@ export const CustomTable = (props) => {
   } = props;
     const getColumnsLength=()=>{
       if(headers.length>0){
-        return headers.length;
+        return Number(headers.length);
       }
       else{
         if(data.length>0){
           let dataLengthsArray=[];
            data.forEach(arr=>dataLengthsArray.push(arr.length));
             let maxLengthFromData = Math.max(...dataLengthsArray);
-            return Math.max(maxLengthFromData,columns)
+            return Number(Math.max(maxLengthFromData,columns))
           }
           else{
-            return columns
+            return Number(columns)
           }
         }
      
@@ -36,7 +36,7 @@ export const CustomTable = (props) => {
 if(data.length>0  && data.length>rows )
       return data.length 
       else 
-      return rows
+      return Number(rows)
 }
   const tableBody = () => {
     return [...Array(getRowsLength())].map((_, rowIndex) => (
