@@ -1,0 +1,7 @@
+.editable_input{
+    padding:0;
+    border:unset;
+}
+.editable_input:focus-visible{
+    outline: unset;
+}
