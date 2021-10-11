@@ -1,6 +1,6 @@
 {
   "name": "custom-table-react",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "A react table component that accepts rows, columns, data, header details etc. and allows editing table cells and customise column widths",
   "main": "dist/index.js",
   "module":"dist/index.es.js",
@@ -12,6 +12,9 @@
   },
   "author": "Piyush Gupta",
   "license": "MIT",
+  "homepage": "https://github.com/TheAlpher/custom-table-react#readme",
+  "repository": "github:TheAlpher/custom-table-react",
+
   "devDependencies": {
     "@babel/core": "^7.12.10",
     "@babel/preset-react": "^7.12.10",

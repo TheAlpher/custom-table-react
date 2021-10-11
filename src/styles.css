@@ -5,3 +5,6 @@
 .editable_input:focus-visible{
     outline: unset;
 }
+.input_cell{
+    min-width: 10px;
+}
