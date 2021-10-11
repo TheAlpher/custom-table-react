@@ -67,6 +67,27 @@ defaultValue : []
 Example : 
 <CustomTable rows={3} columns={3} data={[['cell1data' ,'cell2data','cell3data'], ['cell4',26,'cell6data'],[77,88,99]]} />
 ```
+* When prop **data** is defined with a non-zero length array,
+    - The **headers** prop length will be the columns value for table.
+    - If **headers** prop is empty, The higher value between:
+        - maximum **data** prop array element length 
+        - **columns** prop
+    
+         will be the columns value for table
+
+    - The higher value between :
+        - **data** prop length  
+        - **rows** prop
+
+        will be the rows value for table
+
+    
+    Example : 
+    ```
+    <CustomTable rows={3} columns={3} data={[['cell1data' ,'cell2data','cell3data'], ['cell4',26,'cell6data'],[77,88,99],['cell10','cell11','cell12']]} />
+    ``` 
+    Above Example will render **4 columns instead of 3** as the length of **data** prop array is 4.
+
 &nbsp;
 
 ### **headers**
@@ -79,22 +100,14 @@ defaultValue: []
 Example : 
 <CustomTable rows={3} columns={3} headers={['Header1','Header2','Header3']} />
 ```
-* When prop **headers** is defined with a non-zero length array, the number of rows rendered for cell data would be 1 less than defined **rows** value.
-    
-    Example : 
-    ```
-    <CustomTable rows={3} columns={3} headers={['Header1','Header2','Header3']} />
-    ``` 
-    Above Example will render **1 row with headers for the table and 2 rows for the cell data**.
-
-* When prop **headers** is defined with a non-zero length array, the prop **headers** array's length will be given higher priority over prop **columns** value
+* When prop **headers** is defined with a non-zero length array, the prop **headers** array's length will be given higher priority over prop **columns** value and maximum **data** prop array element length value.
 
     
     Example : 
     ```
-    <CustomTable rows={3} columns={2} headers={['Header1','Header2','Header3']} />
+    <CustomTable rows={3} columns={2} headers={['Header1','Header2','Header3']}  data={[['cell1data' ,'cell2data','cell3data',55], ['cell4',26,'cell6data',34,66]]}  />
     ``` 
-    Above Example will render **3 columns instead of 2** as the length of **headers** prop array is 2 .
+    Above Example will render **3 columns instead of 2 or 5** as the length of **headers** prop array is 3.
 
 &nbsp;
 
@@ -121,7 +134,7 @@ defaultValue : null
 &nbsp;
 &nbsp;
 ### **onChange**
-Triggered when a editable cell value is changed
+Triggered when an editable cell value is changed
 
 ### Parameters
 - value : Updated Value of the edited cell 

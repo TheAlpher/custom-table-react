@@ -1,6 +1,6 @@
 {
   "name": "custom-table-react",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "A react table component that accepts rows, columns, data, header details etc. and allows editing table cells and customise column widths",
   "main": "dist/index.js",
   "module":"dist/index.es.js",

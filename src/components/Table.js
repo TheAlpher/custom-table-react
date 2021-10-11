@@ -15,11 +15,33 @@ export const CustomTable = (props) => {
     onChange,
     ...rest
   } = props;
-
+    const getColumnsLength=()=>{
+      if(headers.length>0){
+        return headers.length;
+      }
+      else{
+        if(data.length>0){
+          let dataLengthsArray=[];
+           data.forEach(arr=>dataLengthsArray.push(arr.length));
+            let maxLengthFromData = Math.max(...dataLengthsArray);
+            return Math.max(maxLengthFromData,columns)
+          }
+          else{
+            return columns
+          }
+        }
+     
+      }
+    const getRowsLength=()=>{
+if(data.length>0  && data.length>rows )
+      return data.length 
+      else 
+      return rows
+}
   const tableBody = () => {
-    return [...Array(headers.length ? rows - 1 : rows)].map((_, rowIndex) => (
+    return [...Array(getRowsLength())].map((_, rowIndex) => (
       <tr className="table_body__row" key={rowIndex}>
-        {[...Array(headers.length ? headers.length : columns)].map(
+        {[...Array(getColumnsLength())].map(
           (_, columnIndex) => (
             <Cell
               onChange={onChange}
@@ -39,17 +61,7 @@ export const CustomTable = (props) => {
     <table {...rest}>
       {columnsWidth.length ? (
         <colgroup>
-          {headers.length
-            ? headers.map((_, headerIndex) => (
-                <col
-                  key={headerIndex}
-                  span="1"
-                  style={{
-                    width: columnsWidth[headerIndex] + "%",
-                  }}
-                ></col>
-              ))
-            : [...Array(columns)].map((_, i) => (
+{ [...Array(getColumnsLength())].map((_, i) => (
                 <col
                   key={i}
                   span="1"
